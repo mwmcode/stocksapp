@@ -6,7 +6,7 @@ GET {{api_HostAddress}}/api/stock
 Accept: application/json
 
 ###
-GET {{api_HostAddress}}/api/stock/10
+GET {{api_HostAddress}}/api/stock/11
 Accept: application/json
 
 
@@ -16,7 +16,7 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "symbol": "MWM",
+  "symbol": "DFDSFDSDFSDFSDFSDFSFDSDSFS",
   "company": "MWM Corp",
   "purchase": 90.50,
   "lastDiv": 2.75,
@@ -25,12 +25,12 @@ Content-Type: application/json
 }
 
 ###
-PUT {{api_HostAddress}}/api/stock/10
+PUT {{api_HostAddress}}/api/stock/11
 Accept: application/json
 Content-Type: application/json
 
 {
-  "symbol": "MOMO",
+  "symbol": "__MWM__",
   "company": "MMMMM",
   "purchase": 205.50,
   "lastDiv": 0,
@@ -39,4 +39,4 @@ Content-Type: application/json
 }
 
 ###
-DELETE {{api_HostAddress}}/api/stock/10
+DELETE {{api_HostAddress}}/api/stock/11
