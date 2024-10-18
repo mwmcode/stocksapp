@@ -6,7 +6,7 @@ GET {{api_HostAddress}}/api/stock
 Accept: application/json
 
 ###
-GET {{api_HostAddress}}/api/stock/1
+GET {{api_HostAddress}}/api/stock/10
 Accept: application/json
 
 
@@ -25,13 +25,13 @@ Content-Type: application/json
 }
 
 ###
-PUT {{api_HostAddress}}/api/stock/6
+PUT {{api_HostAddress}}/api/stock/10
 Accept: application/json
 Content-Type: application/json
 
 {
-  "symbol": "AMZ",
-  "company": "Amazon",
+  "symbol": "MOMO",
+  "company": "MMMMM",
   "purchase": 205.50,
   "lastDiv": 0,
   "industry": "Technology",
@@ -39,4 +39,4 @@ Content-Type: application/json
 }
 
 ###
-DELETE {{api_HostAddress}}/api/stock/8
+DELETE {{api_HostAddress}}/api/stock/10
