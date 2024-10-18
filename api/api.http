@@ -1,6 +1,42 @@
 @api_HostAddress = http://localhost:5246
 
-GET {{api_HostAddress}}/weatherforecast/
+
+###
+GET {{api_HostAddress}}/api/stock
 Accept: application/json
 
 ###
+GET {{api_HostAddress}}/api/stock/1
+Accept: application/json
+
+
+###
+POST {{api_HostAddress}}/api/stock/
+Accept: application/json
+Content-Type: application/json
+
+{
+  "symbol": "MWM",
+  "company": "MWM Corp",
+  "purchase": 90.50,
+  "lastDiv": 2.75,
+  "industry": "Technology",
+  "marketCap": 4934893
+}
+
+###
+PUT {{api_HostAddress}}/api/stock/6
+Accept: application/json
+Content-Type: application/json
+
+{
+  "symbol": "AMZ",
+  "company": "Amazon",
+  "purchase": 205.50,
+  "lastDiv": 0,
+  "industry": "Technology",
+  "marketCap": 75934893
+}
+
+###
+DELETE {{api_HostAddress}}/api/stock/8
