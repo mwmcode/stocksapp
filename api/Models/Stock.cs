@@ -20,7 +20,7 @@ namespace api.Models
 
         public long MarketCap { get; set; }
 
-        public List<Comment> Comment { get; set; } = new List<Comment>();
+        public List<Comment> Comments { get; set; } = new List<Comment>();
 
     }
 }

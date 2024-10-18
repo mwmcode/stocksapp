@@ -1,0 +1,34 @@
+@api_HostAddress = http://localhost:5246
+
+
+###
+GET {{api_HostAddress}}/api/comment
+Accept: application/json
+
+###
+GET {{api_HostAddress}}/api/comment/2
+Accept: application/json
+
+###
+POST {{api_HostAddress}}/api/comment/3
+Accept: application/json
+Content-Type: application/json
+
+{
+  "title": "This is NEW comment",
+  "content": "This is NEW conetnt from API req"
+}
+
+###
+PUT {{api_HostAddress}}/api/comment/5
+Accept: application/json
+Content-Type: application/json
+
+{
+  "title": "UPDATED",
+  "content": "MASKED"
+}
+
+###
+DELETE {{api_HostAddress}}/api/comment/5
+Accept: application/json

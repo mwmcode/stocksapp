@@ -6,7 +6,7 @@ GET {{api_HostAddress}}/api/stock
 Accept: application/json
 
 ###
-GET {{api_HostAddress}}/api/stock/11
+GET {{api_HostAddress}}/api/stock/3
 Accept: application/json
 
 

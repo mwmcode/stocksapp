@@ -40,7 +40,11 @@ namespace api.Controllers
         {
             var stockModel = stockDto.ToStockFromCreatedDTO();
             await _stockRepo.CreateAsync(stockModel);
-            return CreatedAtAction(nameof(GetById), new { id = stockModel.Id }, stockModel.ToStockDto());
+            return CreatedAtAction(
+                nameof(GetById),
+                new { id = stockModel.Id },
+                stockModel.ToStockDto()
+            );
         }
 
         [HttpPut]
