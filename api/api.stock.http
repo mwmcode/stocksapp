@@ -2,7 +2,11 @@
 
 
 ###
-GET {{api_HostAddress}}/api/stock
+GET {{api_HostAddress}}/api/stock?size=2&page=8
+Accept: application/json
+
+###
+GET {{api_HostAddress}}/api/stock?SortBy=Symbol&IsDescending=true
 Accept: application/json
 
 ###
