@@ -1,0 +1,13 @@
+@api_HostAddress = http://localhost:5246
+
+
+###
+POST {{api_HostAddress}}/api/account/register
+Accept: application/json
+Content-Type: application/json
+
+{
+  "username": "mustafa123",
+  "email": "mustafa@gmail.com",
+  "password": "Passwo0rd195$"
+}
