@@ -24,7 +24,7 @@ DECLARE @MaxRecords INT = 200;
 
 WHILE @Counter <= @MaxRecords
 BEGIN
-    INSERT INTO [dbo].[Stocks] ([Symbol], [Company], [Purchase], [LastDiv], [Industry], [MarketCap])
+    INSERT INTO [stocks].[dbo].[Stocks] ([Symbol], [Company], [Purchase], [LastDiv], [Industry], [MarketCap])
     VALUES (
         CONCAT('SYM', @Counter),
         CONCAT('Company ', @Counter),
@@ -54,7 +54,7 @@ DECLARE @StockIdMax INT = 200;
 
 WHILE @Counter <= @MaxRecords
 BEGIN
-    INSERT INTO [dbo].[Comments] ([Title], [Content], [CreatedAt], [StockId])
+    INSERT INTO [stocks].[dbo].[Comments] ([Title], [Content], [CreatedAt], [StockId])
     VALUES (
         CONCAT('Comment Title ', @Counter),
         CONCAT('Culpa officia dolor sint dolor dolor.', @Counter, '. It provides feedback or discussion related to a stock.'),
@@ -64,7 +64,28 @@ BEGIN
 
     SET @Counter = @Counter + 1;
 END;
+```
 
+- portfolios table
+
+```sql
+DECLARE @Counter INT = 1;
+DECLARE @MaxRecords INT = 1000;
+DECLARE @StockIdMin INT = 1;
+DECLARE @StockIdMax INT = 200;
+
+WHILE @Counter <= @MaxRecords
+BEGIN
+    INSERT INTO [stocks].[dbo].[Comments] ([Title], [Content], [CreatedAt], [StockId])
+    VALUES (
+        CONCAT('Comment Title ', @Counter),
+        CONCAT('Culpa officia dolor sint dolor dolor.', @Counter, '. It provides feedback or discussion related to a stock.'),
+        DATEADD(MINUTE, -1 * (RAND() * 10000), SYSDATETIME()),
+        CAST((RAND() * (@StockIdMax - @StockIdMin) + 13) AS INT)
+    );
+
+    SET @Counter = @Counter + 1;
+END;
 ```
 
 ### Modifying db
