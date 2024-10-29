@@ -45,6 +45,9 @@ END;
 ```
 
 - comments table
+1. register users
+2. get user ids
+3. update snippet below with user ids
 
 ```sql
 DECLARE @Counter INT = 1;

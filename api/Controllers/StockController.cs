@@ -23,8 +23,8 @@ namespace api.Controllers
         public async Task<IActionResult> GetAll([FromQuery] QueryParams query)
         {
             var stocks = await _stockRepo.GetAllStocksAsync(query);
-            var stockDto = stocks.Select(s => s.ToStockDto());
-            return Ok(stocks);
+
+            return Ok(stocks.Select(s => s.ToStockDto()).ToList());
         }
 
         [HttpGet("{id:int}")]
