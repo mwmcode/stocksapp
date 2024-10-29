@@ -67,26 +67,9 @@ END;
 ```
 
 - portfolios table
+1. register users
+2. manually insert records (user id & stock id)
 
-```sql
-DECLARE @Counter INT = 1;
-DECLARE @MaxRecords INT = 1000;
-DECLARE @StockIdMin INT = 1;
-DECLARE @StockIdMax INT = 200;
-
-WHILE @Counter <= @MaxRecords
-BEGIN
-    INSERT INTO [stocks].[dbo].[Comments] ([Title], [Content], [CreatedAt], [StockId])
-    VALUES (
-        CONCAT('Comment Title ', @Counter),
-        CONCAT('Culpa officia dolor sint dolor dolor.', @Counter, '. It provides feedback or discussion related to a stock.'),
-        DATEADD(MINUTE, -1 * (RAND() * 10000), SYSDATETIME()),
-        CAST((RAND() * (@StockIdMax - @StockIdMin) + 13) AS INT)
-    );
-
-    SET @Counter = @Counter + 1;
-END;
-```
 
 ### Modifying db
 ```sh

@@ -45,5 +45,65 @@ namespace api.Controllers
 
             return Ok(userPortfolio);
         }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> AddPortfolio(string symbol)
+        {
+            var username = User.GetUsername();
+            var user = await _userManager.FindByNameAsync(username);
+            var stock = await _stockRepo.GetBySymbolAsync(symbol);
+
+            if (stock == null)
+            {
+                return BadRequest("Stock not found!");
+            }
+
+            var userPortfolio = await _portfolioRepo.GetUserPortfolio(user);
+
+            if (userPortfolio.Any(p => p.Symbol.ToLower() == symbol.ToLower()))
+            {
+                return BadRequest("Stock already exists in user portfolio");
+            }
+
+            var portfolioModel = new Portfolio
+            {
+                StockId = stock.Id,
+                AppUserId = user.Id,
+            };
+
+            var portfolio = await _portfolioRepo.CreateAsync(portfolioModel);
+            if (portfolio == null)
+            {
+                return StatusCode(500, "Failed to create portfolio");
+            }
+            return Created();
+        }
+
+        [HttpDelete]
+        [Authorize]
+        public async Task<ActionResult> DeletePortfolio(string symbol)
+        {
+            var username = User.GetUsername();
+            var user = await _userManager.FindByNameAsync(username);
+            var stock = await _stockRepo.GetBySymbolAsync(symbol);
+
+            if (stock == null)
+            {
+                return BadRequest("Stock not found!");
+            }
+
+            var userPortfolio = await _portfolioRepo.GetUserPortfolio(user);
+            var stockReq = userPortfolio.Where(p => p.Symbol.ToLower() == symbol.ToLower());
+
+            if (stockReq.Count() != 1)
+            {
+                return BadRequest("Stock not found in user portfolio");
+            }
+
+            await _portfolioRepo.DeletePortfolio(user, symbol);
+
+            return Ok();
+        }
     }
 }
