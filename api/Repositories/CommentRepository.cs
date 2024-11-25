@@ -1,19 +1,14 @@
 using api.Data;
 using api.DTOs.Comment;
 using api.Interfaces;
-using api.Mappers;
 using api.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace api.Repositories
 {
-    public class CommentRepository : ICommentRepository
+    public class CommentRepository(ApplicationDbContext context) : ICommentRepository
     {
-        private readonly ApplicationDBContext _context;
-        public CommentRepository(ApplicationDBContext context)
-        {
-            _context = context;
-        }
+        private readonly ApplicationDbContext _context = context;
 
         public async Task<Comment> CreateAsync(Comment comment)
         {

@@ -6,14 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace api.Repositories
 {
-    public class PortfolioRepository : IPortfolioRepository
+    public class PortfolioRepository(ApplicationDbContext context) : IPortfolioRepository
     {
-        private readonly ApplicationDBContext _context;
-
-        public PortfolioRepository(ApplicationDBContext context)
-        {
-            _context = context;
-        }
+        private readonly ApplicationDbContext _context = context;
 
         public async Task<Portfolio> CreateAsync(Portfolio portfolio)
         {

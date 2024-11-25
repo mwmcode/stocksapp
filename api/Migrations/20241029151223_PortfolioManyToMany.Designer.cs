@@ -11,7 +11,7 @@ using api.Data;
 
 namespace api.Migrations
 {
-    [DbContext(typeof(ApplicationDBContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20241029151223_PortfolioManyToMany")]
     partial class PortfolioManyToMany
     {
