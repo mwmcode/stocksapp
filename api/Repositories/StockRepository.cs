@@ -7,13 +7,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace api.Repositories
 {
-    public class StockRepository : IStockRepository
+    public class StockRepository(ApplicationDbContext context) : IStockRepository
     {
-        private readonly ApplicationDBContext _context;
-        public StockRepository(ApplicationDBContext context)
-        {
-            _context = context;
-        }
+        private readonly ApplicationDbContext _context = context;
 
         public async Task<Stock> CreateAsync(Stock stockModel)
         {
